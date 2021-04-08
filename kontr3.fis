@@ -1,0 +1,45 @@
+[System]
+Name='kontr3'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-4 4]
+NumMFs=3
+MF1='neg':'trimf',[-8 -4 0]
+MF2='zero':'trimf',[-2 0 2]
+MF3='pos':'trimf',[0 4 8]
+
+[Input2]
+Name='de'
+Range=[-0.06 0.06]
+NumMFs=3
+MF1='neg':'trimf',[-0.11 -0.06 0]
+MF2='zero':'trimf',[-0.02 0 0.02]
+MF3='pos':'trimf',[0 0.06 0.11]
+
+[Output1]
+Name='upr'
+Range=[-0.03 0.03]
+NumMFs=5
+MF1='malo':'trapmf',[-0.057 -0.033 -0.025 -0.0075]
+MF2='srednje':'trimf',[-0.0075 0 0.0075]
+MF3='veliko':'trapmf',[0.0075 0.025 0.033 0.057]
+MF4='srednjeMalo':'trimf',[-0.015 -0.0075 0]
+MF5='srednjeVeliko':'trimf',[0 0.0075 0.015]
+
+[Rules]
+3 0, 3 (1) : 1
+1 0, 1 (1) : 1
+2 1, 4 (1) : 1
+2 3, 5 (1) : 1
+2 2, 2 (1) : 1
